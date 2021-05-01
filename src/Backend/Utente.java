@@ -27,7 +27,7 @@ public class Utente extends Utilizador{
         this.dataNascimento = dataNascimento;
     }
       
-    public voi
+  
       
       
     public int getNumeroUtente(){
