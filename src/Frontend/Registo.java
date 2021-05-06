@@ -5,6 +5,8 @@
  */
 package Frontend;
 
+import Backend.Sistema;
+import Backend.interfaces.GestorUtilizadores;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
@@ -14,18 +16,16 @@ import javax.swing.JOptionPane;
  * @author anais
  */
 public class Registo extends javax.swing.JFrame {
-        private Sistema sistema;
-        private Serializaçao bd;
-   
+        private GestorUtilizadores gestor;
+      
         
-    public Registo(Sistema sistema,Serializaçao bd) {
+    public Registo(GestorUtilizadores gestor) {
         initComponents();
         
         this.setResizable(false);
         this.setLocationRelativeTo(null);
         this.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
-        this.bd=bd;
-        this.sistema=sistema;
+        this.gestor = gestor;
     }
     
     private boolean validarEmail(String email){
@@ -42,20 +42,7 @@ public class Registo extends javax.swing.JFrame {
             Txtusername.requestFocus();
             return;
             
-              }else {
-            String primeiraLetra= (Txtusername.getText().substring(0,1));
-            if (!primeiraLetra.equals("G")){
-                JOptionPane.showMessageDialog(this, "Introduza um código válido (ex:Gxxx).");
-                Txtusername.requestFocus();
-                return;
-            }else{
-                String tamanho = (Txtusername.getText());
-                if(tamanho.length()!=4)  {
-                JOptionPane.showMessageDialog(this, "Introduza um código somente com 4 digitos.");
-                Txtusername.requestFocus();
-                return;
-                }
-             }
+              
         
         }
 
@@ -88,8 +75,18 @@ public class Registo extends javax.swing.JFrame {
             return;
         }
         
+       try{ if (gestor.inserirUtilizador(Txtusername.getText(),String.valueOf(TxtPassword.getPassword()), TxtEmail.getText(), TxtNome.getText())){
+            //inserido com sucesso
+        }else{
+        //falha ao inserir
+          JOptionPane.showMessageDialog(this, "erro");     
 
-        if (sistema.getListaUtilizadores().existeUtilizador(Txtusername.getText())){
+        } 
+       }catch(Exception e){
+         JOptionPane.showMessageDialog(this, e.getMessage());  
+       }
+        
+        /*if (sistema.getListaUtilizadores().existeUtilizador(Txtusername.getText())){
             JOptionPane.showMessageDialog(this, "Username já em uso!", "Erro", JOptionPane.WARNING_MESSAGE);
             Txtusername.requestFocus();
             return;
@@ -115,7 +112,7 @@ public class Registo extends javax.swing.JFrame {
                 
                 
             }
-        }
+        }*/
         
     }
     /**
@@ -226,41 +223,7 @@ public class Registo extends javax.swing.JFrame {
         registar();
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Registo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Registo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Registo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Registo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new Registo().setVisible(true);
-            }
-        });
-    }
-
+ 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField TxtEmail;
     private javax.swing.JTextField TxtNome;

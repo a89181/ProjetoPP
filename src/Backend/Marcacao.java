@@ -16,5 +16,19 @@ public class Marcacao {
     }
     public LocalTime getHora(){
         return hora;
-    }  
+    } 
+
+    public void setData(LocalDate data) {
+        this.data = data;
+    }
+
+    public void setUtente(Utente utente) {
+        this.utente = utente;
+    }
+
+    public void setHora(LocalTime hora) {
+        this.hora = hora;
+    }
+    
+    
 }

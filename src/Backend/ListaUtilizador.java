@@ -1,9 +1,11 @@
 package Backend;
 
+
 import java.util.ArrayList;
 
 public class ListaUtilizador {
-  private ArrayList<Utilizador> lista;
+    private ArrayList<Utilizador> lista;
+    
     public ListaUtilizador(){
         lista = new ArrayList<> ();
     }
@@ -22,9 +24,47 @@ public class ListaUtilizador {
     public void remover (Utilizador utilizador){
         lista.remove(utilizador);
     }
+    
+    public ArrayList<Utilizador> getListaGestor() {
+        ArrayList<Utilizador> gestor = new ArrayList<> ();
+        
+        for (Utilizador u: lista) {
+            if (u instanceof Gestor) {
+                gestor.add(u);
+            }
+        }
+        
+        return gestor;
+    }
 
+    public ArrayList<Utilizador> getListaAdmin() {
+        ArrayList<Utilizador> admin = new ArrayList<> ();
+        
+        for (Utilizador u: lista) {
+            if (u instanceof Administrador) {
+                admin.add(u);
+            }
+        }
+        
+        return admin;
+    }
+    
+    public ArrayList<Utilizador> getListaUtente() {
+        ArrayList<Utilizador> utente = new ArrayList<> ();
+        
+        for (Utilizador u: lista) {
+            if (u instanceof Utente) {
+                utente.add(u);
+            }
+        }
+        
+        return utente;
+    }
     @Override
     public String toString() {
         return "ListaUtilizador{" + "lista=" + lista + '}';
-    }  
+    }
+    
+    
 }
+

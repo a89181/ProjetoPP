@@ -9,7 +9,7 @@ vacinação ao qual são alocados, indicação se já foi administrada a vacina 
 administrada, as datas da administração da vacina se for o caso.
  */
 public class Utente extends Utilizador{
-  private int numeroUtente;
+    private int numeroUtente;
     private String nomeUtente;
     private String localidadeUtente;
     private String moradaUtente;
@@ -17,34 +17,28 @@ public class Utente extends Utilizador{
     private String emailUtente;
     private LocalDate dataNascimento;
 
-    public Utente(int numeroUtente, String nomeUtente, String localidadeUtente, String moradaUtente, String telefoneUtente, String emailUtente, LocalDate dataNascimento) {
+    public Utente(int numeroUtente, String nomeUtente, String localidadeUtente, String moradaUtente, String telefoneUtente, String emailUtente, LocalDate dataNascimento, String username, String password) {
+        super(username, password);
         this.numeroUtente = numeroUtente;
-        this.nomeUtente = nomeUtente;
         this.localidadeUtente = localidadeUtente;
         this.moradaUtente = moradaUtente;
         this.telefoneUtente = telefoneUtente;
-        this.emailUtente = emailUtente;
         this.dataNascimento = dataNascimento;
+        this.emailUtente = emailUtente;
+        
     }
-      
-  
-      
-      
+    
+    
     public int getNumeroUtente(){
         return numeroUtente;
     }
-    public String getNomeUtente(){
-        return nomeUtente;
-    }
+  
     public String getLocalidadeUtente(){
         return localidadeUtente;
     }
     public String getTelefoneUtente(){
         return telefoneUtente;
     }
-    public String getEmailUtente(){
-        return emailUtente;
-    }  
 
     public String getMoradaUtente() {
         return moradaUtente;
@@ -54,10 +48,41 @@ public class Utente extends Utilizador{
         return dataNascimento;
     }
 
+    public void setNumeroUtente(int numeroUtente) {
+        this.numeroUtente = numeroUtente;
+    }
+
+    public void setNomeUtente(String nomeUtente) {
+        this.nomeUtente = nomeUtente;
+    }
+
+    public void setLocalidadeUtente(String localidadeUtente) {
+        this.localidadeUtente = localidadeUtente;
+    }
+
+    public void setMoradaUtente(String moradaUtente) {
+        this.moradaUtente = moradaUtente;
+    }
+
+    public void setTelefoneUtente(String telefoneUtente) {
+        this.telefoneUtente = telefoneUtente;
+    }
+
+    public void setEmailUtente(String emailUtente) {
+        this.emailUtente = emailUtente;
+    }
+
+    public void setDataNascimento(LocalDate dataNascimento) {
+        this.dataNascimento = dataNascimento;
+    }
+
+
     @Override
     public String toString() {
-        return "Utente{" + "numeroUtente=" + numeroUtente + ", nomeUtente=" + nomeUtente + ", localidadeUtente=" + localidadeUtente + ", moradaUtente=" + moradaUtente + ", telefoneUtente=" + telefoneUtente + ", emailUtente=" + emailUtente + ", dataNascimento=" + dataNascimento + '}';
+        return "Utente{" + "numeroUtente=" + numeroUtente + ", nomeUtente=" + nomeUtente + ", localidadeUtente=" + localidadeUtente + ", moradaUtente=" + moradaUtente + ", telefoneUtente=" + telefoneUtente + ", emailUtente=" + emailUtente + ", dataNascimento=" + dataNascimento + ", username=" + getUsername() + ", password=" + getPassword() + '}';
     }
+    
+
     
     
 }

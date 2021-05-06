@@ -1,10 +1,10 @@
 package Backend;
 
+import java.util.ArrayList;
+
+
+/* mudar esta mal*/
+
 public class StockVacina {
- private Vacina vacina;
-    private int numeroVac;
-    
-    public Vacina getVacina(){
-        return vacina;
-    }   
+  /* usar hashMap associar vacina a quantidade em stock*/
 }

@@ -32,6 +32,26 @@ public class Vacina {
     public int getNumTomas() {
         return numTomas;
     }
+
+    public void setNomeVacina(String nomeVacina) {
+        this.nomeVacina = nomeVacina;
+    }
+
+    public void setTipoVacina(String tipoVacina) {
+        this.tipoVacina = tipoVacina;
+    }
+
+    public void setCodigoVacina(String codigoVacina) {
+        this.codigoVacina = codigoVacina;
+    }
+
+    public void setFabricante(String fabricante) {
+        this.fabricante = fabricante;
+    }
+
+    public void setNumTomas(int numTomas) {
+        this.numTomas = numTomas;
+    }
     
     
 }
